@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    font-family: Ubuntu, system-ui, 'sans-serif';
+}
+
+#output {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#output > div:last-child {
+    margin-bottom: 0;
+}
+
+main, #output-wrapper {
+    height: 0;
+}
+
+.message.me {
+    align-self: flex-end;
+    background-color: rgb(208, 242, 255);
+}
+
+.message {
+    width: fit-content;
+    background-color: lightgray;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.message.others::after{
+    position: absolute;
+    content: '';
+    display: block;
+    height: 0;
+    width: 5px;
+    border-top: 5px solid transparent;
+    border-right: 5px solid lightgray;
+    border-bottom: 5px solid transparent;
+    left: 0;
+    top: 50%;
+    transform: translate(-100%, -50%);
+}
+
+.message.me::after{
+    position: absolute;
+    content: '';
+    display: block;
+    height: 0;
+    width: 5px;
+    border-top: 5px solid transparent;
+    border-left: 5px solid rgb(87, 216, 23);
+    border-bottom: 5px solid transparent;
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+}
+
+#output::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #e0e0e0; /* or add it to the track */
+  }
+  
+#output::-webkit-scrollbar-thumb {
+    background: rgb(12, 144, 196);
+}
+
+#login-overlay{
+    background-color: rgba(0,0,0,0.80);
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#account{
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    align-self: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative
+}
+
+#account-details{
+    position: absolute;
+    width: 200px;
+    right: 0;
+    top: calc(100% + 2px);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    text-align: right;
+    z-index: 99999;
+}
+
+
+
+#user-email {
+    color: gray;
+    font-size: 0.8rem;
+    padding-right: 10px;
+}
+
+#user-name {
+    padding: 10px 10px 0;
+} 
+
+
+
+#btn-sign-out{
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#btn-sign-out:hover{
+    background-color: aqua;
+}
+
+#loader{
+    position: fixed;
+    background-color: white;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader-wrapper{
+    transform: scale(1.5);
+}
+
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: rgb(132, 132, 132)303;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  .lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+  }
+  .lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+  }
+  .lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+  }
+  @keyframes lds-facebook {
+    0% {
+      top: 8px;
+      height: 64px;
+    }
+    50%, 100% {
+      top: 24px;
+      height: 32px;
+    }
+  }
