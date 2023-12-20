@@ -6,11 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
 @Configuration
-
+@EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
     @Primary
@@ -26,13 +27,11 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Bean
     public ChatWSController chatWSController(){
-        System.out.println("chatWSController()");
         return new ChatWSController();
     }
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        System.out.println("registerWebSocketHandlers()");
         registry.addHandler(chatWSController(), "/api/v3/messages").setAllowedOrigins("*");
     }
 }
